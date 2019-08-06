@@ -23,7 +23,7 @@ else:
     pass
 cmd('pacman -Syy pacman-contrib')
 cmd('cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak')
-cmd('echo Sorting mirrors (this could take a while)')
+cmd('echo "Sorting mirrors (this could take a while)"')
 cmd('rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist')
 cmd('rm /etc/pacman.d/mirrorlist.bak')
 cmd('pacstrap /mnt base base-devel dialog wpa_supplicant linux-headers virtualbox-guest-utils intel-ucode amd-ucode bash-completion grub efibootmgr dosfstools gptfdisk acpid avahi cups cronie xorg-server xorg-xinit xorg-drivers ttf-dejavu noto-fonts-emoji gnome')
@@ -62,8 +62,8 @@ if fir == 'UEFI' or fir == 'uefi':
 elif fir == 'BIOS' or fir == 'bios':
     cmd('echo grub-install ' + dis + ' >> /mnt/setup.sh')
 cmd('echo grub-mkconfig -o /boot/grub/grub.cfg >> /mnt/setup.sh')
-cmd('echo First enter "exit" into the command prompt! >> /mnt/setup.sh')
-cmd('echo Then enter "shutdown now" into the command prompt! >> /mnt/setup.sh')
+cmd('echo "First enter exit into the command prompt!" >> /mnt/setup.sh')
+cmd('echo "Then enter shutdown now into the command prompt!" >> /mnt/setup.sh')
 cmd('echo rm /setup.sh >> /mnt/setup.sh')
-cmd('echo Enter "sh setup.sh" into the command prompt!')
+cmd('echo "Enter sh setup.sh into the command prompt!"')
 cmd('arch-chroot /mnt')
