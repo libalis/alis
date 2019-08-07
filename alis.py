@@ -7,6 +7,11 @@ cmd('loadkeys ' + key)
 dis = input('Enter your disk path (e.g., "/dev/sda"): ')
 cmd('cfdisk ' + dis)
 roo = input('Enter your / partition path (e.g., "/dev/sda1"): ')
+if roo == '':
+    while roo == '':
+        roo = input('Enter your / partition path (e.g., "/dev/sda1"): ')
+else:
+    pass
 cmd('mkfs.ext4 -L root ' + roo)
 cmd('mount -L root /mnt')
 hom = input('Enter your /home partition path (e.g., "/dev/sda2"): ')
