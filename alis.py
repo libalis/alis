@@ -8,14 +8,27 @@ dis = input('Enter your disk path (e.g., "/dev/sda"): ')
 cmd('cfdisk ' + dis)
 roo = input('Enter your / partition path (e.g., "/dev/sda1"): ')
 cmd('mkfs.ext4 -L root ' + roo)
-boo = input('Enter your /boot partition path (e.g., "/dev/sda2"): ')
-cmd('mkfs.fat -F 32 -n boot ' + boo)
-swa = input('Enter you swap partition path (e.g., "/dev/sda3"): ')
-cmd('mkswap -L swap ' + swa)
 cmd('mount -L root /mnt')
-cmd('mkdir /mnt/boot')
-cmd('mount -L boot /mnt/boot')
-cmd('swapon -L swap')
+hom = input('Enter your /home partition path (e.g., "/dev/sda2"): ')
+if hom != '':
+    cmd('mkfs.ext4 -L home ' + hom)
+    cmd('mkdir /mnt/home')
+    cmd('mount -L home /mnt/home')
+else:
+    pass
+boo = input('Enter your /boot partition path (e.g., "/dev/sda3"): ')
+if boo != '':
+    cmd('mkfs.fat -F 32 -n boot ' + boo)
+    cmd('mkdir /mnt/boot')
+    cmd('mount -L boot /mnt/boot')
+else:
+    pass
+swa = input('Enter you swap partition path (e.g., "/dev/sda4"): ')
+if swa != '':
+    cmd('mkswap -L swap ' + swa)
+    cmd('swapon -L swap')
+else:
+    pass
 net = input('Enter your network type (WIFI or LAN): ')
 if net == 'WIFI' or net == 'wifi':
     cmd('wifi-menu')
