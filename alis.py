@@ -54,7 +54,6 @@ cmd('echo KEYMAP=' + key + ' > /mnt/etc/vconsole.conf')
 tim = '/mnt/usr/share/zoneinfo/' + input('Enter you time zone (e.g., "Europe/Berlin"): ')
 cmd('ln -sf ' + tim + ' /mnt/etc/localtime')
 cmd('sed -i "s/^ #%wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/" /mnt/etc/sudoers')
-#multilib
 cmd('echo pacman -Syyu > /mnt/alis.sh')
 #localectl set-x11-keymap de pc105 nodeadkeys
 cmd('echo locale-gen >> /mnt/alis.sh')
